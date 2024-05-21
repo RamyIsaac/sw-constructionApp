@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 
 
-
 void main() {
   runApp(SwConstructionProject());
 }
@@ -31,6 +30,39 @@ class FirstPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('First Page'),
       ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+              child: Text(
+                'Menu',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text('First Page'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.arrow_forward),
+              title: Text('Second Page'),
+              onTap: () {
+                Navigator.pushNamed(context, '/second');
+              },
+            ),
+          ],
+        ),
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -44,11 +76,12 @@ class FirstPage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20),
-            ElevatedButton(
+            ElevatedButton.icon(
               onPressed: () {
                 Navigator.pushNamed(context, '/second');
               },
-              child: Text('Go to Second Page'),
+              icon: Icon(Icons.arrow_forward),
+              label: Text('Go to Second Page'),
             ),
           ],
         ),
@@ -64,6 +97,39 @@ class SecondPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Second Page'),
       ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+              child: Text(
+                'Menu',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text('First Page'),
+              onTap: () {
+                Navigator.pushNamed(context, '/');
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.arrow_forward),
+              title: Text('Second Page'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -77,11 +143,12 @@ class SecondPage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20),
-            ElevatedButton(
+            ElevatedButton.icon(
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: Text('Go back to First Page'),
+              icon: Icon(Icons.arrow_back),
+              label: Text('Go back to First Page'),
             ),
           ],
         ),
